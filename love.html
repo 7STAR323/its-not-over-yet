@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galaxy Love 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg1:#030617;
+--bg2:#0a1b34;
+--bg3:#2c1e55;
+--accent:#d8b4ff;
+--heart:#ff4d6d;
+}
+
+html,body{
+margin:0;
+font-family:"Poppins",sans-serif;
+color:white;
+overflow-x:hidden;
+overflow-y:auto;
+}
+
+body{
+padding:40px 20px;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+
+background:
+radial-gradient(circle at 30% 30%,rgba(111,0,255,0.25),transparent 60%),
+radial-gradient(circle at 70% 60%,rgba(0,180,255,0.25),transparent 70%),
+linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
+}
+
+/* star layers */
+
+.stars,.stars2,.stars3{
+position:fixed;
+inset:0;
+z-index:0;
+}
+
+.stars:after,.stars2:after,.stars3:after{
+content:"";
+position:absolute;
+inset:0;
+background-repeat:repeat;
+background-size:2000px 2000px;
+animation:moveStars 200s linear infinite;
+}
+
+.stars:after{
+background-image:
+radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+radial-gradient(2px 2px at 400px 600px,#fff,transparent),
+radial-gradient(1px 1px at 800px 1200px,#fff,transparent);
+}
+
+.stars2:after{
+background-image:
+radial-gradient(2px 2px at 200px 300px,#fff,transparent),
+radial-gradient(1.5px 1.5px at 700px 1500px,#fff,transparent);
+animation-duration:300s;
+}
+
+.stars3:after{
+background-image:
+radial-gradient(1px 1px at 1400px 900px,#fff,transparent),
+radial-gradient(2px 2px at 1900px 1600px,#fff,transparent);
+animation-duration:400s;
+}
+
+@keyframes moveStars{
+from{transform:translateY(0)}
+to{transform:translateY(-2000px)}
+}
+
+/* glow stars */
+
+.twinkle-star{
+position:fixed;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+box-shadow:0 0 6px white,0 0 12px rgba(255,255,255,.8),0 0 20px rgba(255,255,255,.6);
+animation:twinkle 3s infinite ease-in-out;
+z-index:1;
+}
+
+@keyframes twinkle{
+0%{opacity:.2;transform:scale(.8)}
+50%{opacity:1;transform:scale(1.7)}
+100%{opacity:.2;transform:scale(.8)}
+}
+
+/* card */
+
+.wrap{
+width:min(760px,92vw);
+z-index:2;
+text-align:center;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(14px);
+box-shadow:0 12px 40px rgba(0,0,0,.5);
+border-radius:18px;
+padding:40px;
+animation:floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+}
+
+h1{
+margin-bottom:20px;
+font-size:2rem;
+
+background:linear-gradient(90deg,#ffd6ff,#c8b6ff,#bde0fe);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:0 0 15px rgba(200,180,255,.8);
+}
+
+p{
+margin:12px 0;
+font-size:1.05rem;
+line-height:1.7;
+}
+
+/* button */
+
+.btn{
+display:inline-block;
+margin:16px 0 24px 0;
+padding:12px 26px;
+font-size:1rem;
+color:white;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.2);
+border-radius:999px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:rgba(255,255,255,.2);
+}
+
+/* hearts */
+
+.heart{
+position:fixed;
+bottom:-30px;
+width:20px;
+height:20px;
+background:var(--heart);
+transform:rotate(45deg);
+animation:rise 6s linear forwards;
+z-index:3;
+}
+
+.heart:before,.heart:after{
+content:"";
+position:absolute;
+width:20px;
+height:20px;
+background:var(--heart);
+border-radius:50%;
+}
+
+.heart:before{top:-10px;left:0}
+.heart:after{left:-10px;top:0}
+
+@keyframes rise{
+0%{transform:translateY(0) rotate(45deg);opacity:.7}
+50%{opacity:1}
+100%{transform:translateY(-110vh) rotate(45deg);opacity:0}
+}
+
+.note{
+font-size:.9rem;
+margin-top:18px;
+color:#e8dff7;
+}
+
+.wifey-letter{
+font-weight:600;
+font-size:1.2em;
+
+background:linear-gradient(90deg,#ff9cfb,#c8b6ff,#9bf6ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 8px rgba(255,170,255,0.8),
+0 0 14px rgba(200,180,255,0.7);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+
+<div class="wrap">
+<div class="card">
+
+<button class="btn" onclick="playMusic()">🎶 Play Music</button>
+
+<audio id="bg-music" loop>
+<source src="https://www.dropbox.com/scl/fi/tfbqc0a1umvyzo068bx7s/0313-1.MP3?rlkey=ha0c5gaz6ff6v93azudo3zhy8&st=b5oz2d79&dl=0&raw=1&raw=1" type="audio/mpeg">
+</audio>
+
+<h1>🌞 Good Morning Meri Pyari Alishuu❤️</h1>
+
+<p>Meri Radha ❤️, tum meri zindagi ki sabse badi dua ho ✨</p>
+<p>I may not always understand everything perfectly🥺❤️,</p>
+<p>but I never stop caring about you🥺❤️.</p>
+<p>I’m still learning how to love you better❤️,</p>
+<p>and I don’t want to give up on us🥺❤️.</p>
+
+<p>Tumhe pata h mai tumhe wifeyyy kyu bolta hu ?</p>
+
+<p>
+<span class="wifey-letter">W</span> – Warmth that makes my heart feel safe like home❤️<br>
+<span class="wifey-letter">I</span> – Inspiration behind my smile<br>
+<span class="wifey-letter">F</span> – Forever my favorite person<br>
+<span class="wifey-letter">E</span> – Every heartbeat whispers your name<br>
+<span class="wifey-letter">Y</span> – You are my always and forever
+</p>
+
+<p>You’re not just someone in my life,</p>
+<p>you’re the person I want to grow with every day🥺❤️.</p>
+<p>your not only my wifeyyy❤️ your my forever I always choose and forever I never want to lose</p>
+<p>your my inspiration that makes me want to be better and your Irreplaceable in my life</p>
+<p>Everything my heart belongs to every heartbeat whispers your name You are my always and forever</p>
+<p>You the one I never want to lose❤️</p>
+<p>Or yaad rakho, mai hamesha tumhare sath hu 💫</p>
+<p>I love you soo much meri strawberrry🍓✨ more than infinity ❤️♾️</p>
+
+<div class="note">Tap anywhere to sprinkle hearts ✨</div>
+
+</div>
+</div>
+
+<script>
+
+function playMusic(){
+const audio=document.getElementById("bg-music");
+audio.volume=.7;
+audio.play().catch(()=>{});
+}
+
+for(let i=0;i<6;i++){
+let star=document.createElement("div");
+star.className="twinkle-star";
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+star.style.animationDuration=(2+Math.random()*2)+"s";
+document.body.appendChild(star);
+}
+
+document.addEventListener("click",()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),7000);
+});
+
+</script>
+
+</body>
+</html>
